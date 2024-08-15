@@ -46,7 +46,7 @@
               >Add Hero</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="add-type">Add Type</a>
+              <a class="nav-link" aria-current="page" href="/add-type">Add Type</a>
             </li>
             <li class="nav-item">
               <a
@@ -75,51 +75,27 @@
 
             <div class="w-50">
               <div class="mb-3">
-                <label for="input-blog-title" class="form-label mt-4">Project
-                  Name</label>
+                <label for="input-blog-title" class="form-label mt-4">Hero Name</label>
                 <input
                   type="text"
                   class="form-control"
                   id="input-blog-title"
-                  name="title"
-                  value="{{data.title}}"
+                  name="hero_name"
+                  value="{{data.name}}"
                 />
               </div>
-              <div
-                class="mb-3 d-flex justify-content-between width-date-mobile"
-              >
-                <div class="w-100">
-                  <label for="input-blog-start" class="form-label">Start Date</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="input-blog-start"
-                    value="{{startDate}}"
-                    disabled
-                  />
-                </div>
-                <div class="w-100 ms-3">
-                  <label for="input-blog-end" class="form-label">End Date</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="input-blog-end"
-                    value="{{endDate}}"
-                    disabled
-                  />
-                </div>
-              </div>
-              <div class="mb-3">
+               <div class="mb-3">
                 <label
                   for="input-blog-content"
                   class="form-label"
-                >Description</label>
-                <textarea
+                >Hero Type</label>
+                <input
+                  type="number"
                   class="form-control"
                   id="input-blog-content"
-                  style="height: 100px"
-                  name="description"
-                >{{data.description}}</textarea>
+                  name="hero_type"
+                  value={{data.type_id}}
+                ></input>
               </div>
 
               <div class="d-flex justify-content-end">

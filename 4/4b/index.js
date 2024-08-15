@@ -129,7 +129,7 @@ async function renderDetail(req, res) {
 async function renderEdit(req, res) {
   try {
     const id = parseInt(req.params.blog_id);
-    const project = `SELECT * FROM projectdumb WHERE id = $1`;
+    const project = `SELECT * FROM heroes_tb WHERE id = $1`;
     const result = await db.query(project, {
       type: QueryTypes.SELECT,
       bind: [id],
@@ -137,8 +137,6 @@ async function renderEdit(req, res) {
 
     res.render("edit-project", {
       data: result[0],
-      startDate: result[0].start_date,
-      endDate: result[0].end_date,
     });
   } catch (error) {
     console.error("Error in render detail process :", error);
@@ -176,12 +174,12 @@ async function postType(req, res) {
 
 async function editProject(req, res) {
   try {
-    const blog = [req.body.title, req.body.description, req.params.blog_id];
+    const blog = [req.body.hero_name, req.body.hero_type, req.params.blog_id];
 
-    const updateProject = `UPDATE projectdumb SET title = $1, description = $2 WHERE id = $3`;
+    const updateProject = `UPDATE heroes_tb SET name = $1, type_id = $2 WHERE id = $3`;
 
     await db.query(updateProject, { bind: blog });
-    res.redirect("/project");
+    res.redirect("/");
   } catch (e) {
     res.send(`<script>alert("Error! ${e.message}")</script>`);
   }
@@ -190,10 +188,10 @@ async function editProject(req, res) {
 async function deleteProject(req, res) {
   try {
     const id = parseInt(req.params.blog_id);
-    const deleteProject = `DELETE FROM projectdumb WHERE id = $1`;
+    const deleteProject = `DELETE FROM heroes_tb WHERE id = $1`;
 
     await db.query(deleteProject, { bind: [id] });
-    res.redirect("/project");
+    res.redirect("/");
   } catch (error) {
     res.send(`<script>alert("Error! ${e.message}")</script>`);
   }
@@ -285,64 +283,3 @@ function logout(req, res) {
 app.listen(port, () => {
   console.log(`Server berjalan di port ${port}`);
 });
-
-// function addProject(req, res) {
-//   try {
-//     imagePath = req.file.path.replace("views\\", "");
-
-//     const id = blogs.length + 1;
-//     const { title, description, startDate, endDate, techCheck } = req.body;
-//     const image = req.file ? imagePath : null;
-//     const dateDiffStart = new Date(startDate);
-//     const dateDiffEnd = new Date(endDate);
-//     const dayAmount = `${
-//       (dateDiffEnd - dateDiffStart) / (24 * 3600 * 1000)
-//     } hari`;
-//     const createdAt = new Date();
-//     const author = "Alfi Dharmawan";
-//     const months = [
-//       "Jan",
-//       "Feb",
-//       "Maret",
-//       "April",
-//       "Mei",
-//       "Juni",
-//       "Juli",
-//       "Agust",
-//       "Sept",
-//       "Oct",
-//       "Nov",
-//       "Dec",
-//     ];
-//     const strDate = startDate;
-//     const edDate = endDate;
-//     const dateBegin = strDate.split("-"); // turn the date into a list format
-//     const dateFinal = edDate.split("-"); // turn the date into a list format
-//     const dateStart = `${dateBegin[2]} ${months[dateBegin[1] - 1]} ${
-//       dateBegin[0]
-//     }`;
-//     const dateEnd = `${dateFinal[2]} ${months[dateFinal[1] - 1]} ${
-//       dateFinal[0]
-//     }`;
-
-//     const blog = {
-//       id,
-//       title,
-//       description,
-//       dateStart,
-//       dateEnd,
-//       dayAmount,
-//       image,
-//       createdAt,
-//       author,
-//       techCheck,
-//     };
-//     console.log(blog);
-
-//     blogs.unshift(blog);
-//     res.redirect("/project");
-//   } catch (e) {
-//     res.send(`<script>alert("Error! ${e.message}")</script>`);
-//     // will display blank page with 404 here, alert is temporary
-//   }
-// }
