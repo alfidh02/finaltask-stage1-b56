@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Poppins", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+/* form styling */
+form {
+  width: 35%;
+  margin: 25px auto;
+}
+
+input,
+select,
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(197, 182, 182);
+}
+
+textarea {
+  resize: vertical;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+form label {
+  font-weight: 500;
+}
+
+form button {
+  background-color: orangered;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: rgb(255, 166, 0);
+  transition: 0.5s;
+}
+
+h2 {
+  text-align: center;
+}
+
+.img-as-bg {
+  height: 300px;
+  overflow: hidden;
+  background-size: cover;
+  background-image: url("../images/luffy.jpg");
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px rgba(0, 0, 0, 0.084) solid;
+  width: 70%;
+  margin: auto;
+  margin-top: 22px;
+  padding: 15px 50px;
+  box-shadow: 0px 0px 30px rgba(224, 224, 224, 0.881);
+  border-radius: 15px;
+}
+
+#first-column {
+  flex: 50%;
+  margin-right: 50px;
+}
+
+#first-column-paragraph {
+  text-align: justify;
+}
+
+#contact-button {
+  font-family: "Poppins";
+  background-color: #111727;
+  color: white;
+  padding: 5px 25px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  margin-right: 30px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+#contact-link {
+  text-decoration: none;
+  color: white;
+}
+
+#social-links a {
+  margin-top: 30px;
+  font-size: 35px;
+  text-decoration: none;
+  color: black;
+}
+
+#social-links i {
+  font-size: 30px;
+}
+
+.social-icon {
+  color: #111727;
+  margin-right: 14px;
+  cursor: pointer;
+}
+
+#second-column {
+  flex: 50%;
+  height: 100%;
+  background-color: white;
+  width: max-content;
+  border: 1px solid rgba(0, 0, 0, 0.084);
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0px 0px 30px rgba(224, 224, 224, 0.881);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  padding: 200px;
+}
+
+.height-mobile {
+  height: 100%;
+}
+
+.card-width-mobile {
+  width: 30%;
+}
+
+.width-container-mobile {
+  width: 75%;
+}
+
+@media only screen and (max-width: 650px) {
+  .container {
+    padding: 100px;
+  }
+
+  #main-container {
+    display: block;
+    text-align: center;
+  }
+
+  #second-column {
+    width: 100%;
+    height: auto;
+  }
+
+  .height-mobile {
+    height: auto;
+  }
+
+  .card-width-mobile {
+    width: 100%;
+  }
+
+  .width-container-mobile {
+    width: 100%;
+  }
+
+  .small-container-mobile {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .container {
+    flex-direction: column;
+    padding: 0;
+  }
+}
