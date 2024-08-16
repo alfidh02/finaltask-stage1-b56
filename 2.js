@@ -19,6 +19,14 @@ function dumbVoucher(voucher, prices) {
       }
       moneySpent = prices - discount;
     }
+  } else if (voucher === "DumbwaysKeren") {
+    if (prices >= 100000) {
+      discount = prices * 0.5;
+      if (discount > 50000) {
+        discount = 50000;
+      }
+      moneySpent = prices - discount;
+    }
   }
 
   change = prices - moneySpent;
@@ -30,3 +38,4 @@ function dumbVoucher(voucher, prices) {
 
 dumbVoucher("DumbWaysJos", 40000);
 dumbVoucher("DumbWaysJos", 100000);
+dumbVoucher("DumbwaysKeren", 100000);

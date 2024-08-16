@@ -79,11 +79,15 @@ async function renderHero(req, res) {
 
     if (loggedIn) {
       const project = `SELECT h.*, t.name as type_name FROM heroes_tb h JOIN type_tb t ON h.type_id = t.id ORDER BY id ASC`;
+      const typeHero = `SELECT * FROM type_tb`;
+
       const results = await db.query(project, { type: QueryTypes.SELECT });
+      const resultsType = await db.query(typeHero, { type: QueryTypes.SELECT });
 
       res.render("add-hero", {
         data: results,
         loggedIn: loggedIn,
+        typeResult: resultsType,
       });
       return;
     }
@@ -129,14 +133,19 @@ async function renderDetail(req, res) {
 async function renderEdit(req, res) {
   try {
     const id = parseInt(req.params.blog_id);
-    const project = `SELECT * FROM heroes_tb WHERE id = $1`;
+
+    const typeHero = `SELECT * FROM type_tb`;
+    const project = `SELECT * FROM heroes_tb WHERE id =$1`;
+
     const result = await db.query(project, {
       type: QueryTypes.SELECT,
       bind: [id],
     });
+    const resultsType = await db.query(typeHero, { type: QueryTypes.SELECT });
 
     res.render("edit-project", {
       data: result[0],
+      typeResult: resultsType,
     });
   } catch (error) {
     console.error("Error in render detail process :", error);

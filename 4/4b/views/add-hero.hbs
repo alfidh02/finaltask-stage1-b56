@@ -100,13 +100,11 @@
                   for="input-blog-content"
                   class="form-label"
                 >Hero Type</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="input-blog-content"
-                  name="hero_tipe"
-                  required
-                ></input>
+                <select name="hero_tipe" id="type">     
+                  {{#each typeResult}}  
+                  <option value="{{this.id}}">{{this.name}}</option>
+                  {{/each}}
+                </select>
               </div>
               <div class="mb-3 mt-4">
                 <label for="input-blog-image" class="form-label">Upload Image</label>

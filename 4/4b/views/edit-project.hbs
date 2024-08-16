@@ -84,18 +84,13 @@
                   value="{{data.name}}"
                 />
               </div>
-               <div class="mb-3">
-                <label
-                  for="input-blog-content"
-                  class="form-label"
-                >Hero Type</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="input-blog-content"
-                  name="hero_type"
-                  value={{data.type_id}}
-                ></input>
+              <div class="mb-3">
+                <label for="input-blog-content" class="form-label">Hero Type</label>
+                <select name="hero_type" id="type">
+                  {{#each typeResult}}
+                    <option value="{{this.id}}">{{this.name}}</option>
+                  {{/each}}
+                </select>
               </div>
 
               <div class="d-flex justify-content-end">
